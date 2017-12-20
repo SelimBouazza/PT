@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.4
+- https://www.phpmyadmin.net
+-
+- Hôte : 127.0.0.1
+- Généré le :  mer. 20 déc. 2017 à 17:19
+- Version du serveur :  10.1.28-MariaDB
+- Version de PHP :  7.1.11
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="searcheat" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="favoris">
+                CREATE TABLE `favoris` (
+                  `Id_pers` int(11) NOT NULL,
+                  `id_plat` int(11) NOT NULL,
+                  PRIMARY KEY (`Id_pers`,`id_plat`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="ingredients">
+                CREATE TABLE `ingredients` (
+                  `id_ingredient` int(11) NOT NULL AUTO_INCREMENT,
+                  `nom_ingredient` varchar(50) NOT NULL,
+                  PRIMARY KEY (`id_ingredient`),
+                  UNIQUE KEY `ingredient` (`nom_ingredient`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="menu">
+                CREATE TABLE `menu` (
+                  `id_menu` int(11) NOT NULL,
+                  `id_restaurant` int(11) NOT NULL,
+                  `id_plat` int(11) NOT NULL,
+                  PRIMARY KEY (`id_menu`,`id_restaurant`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="personne">
+                CREATE TABLE `personne` (
+                  `Id_pers` int(11) NOT NULL AUTO_INCREMENT,
+                  `nom` varchar(20) NOT NULL,
+                  `prenom` varchar(20) NOT NULL,
+                  `mel` varchar(255) NOT NULL,
+                  `mdp` varchar(255) NOT NULL,
+                  PRIMARY KEY (`Id_pers`),
+                  UNIQUE KEY `mel` (`mel`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="plat">
+                CREATE TABLE `plat` (
+                  `id_plat` int(11) NOT NULL AUTO_INCREMENT,
+                  `nom_plat` varchar(50) NOT NULL,
+                  `id_ingredient` int(11) NOT NULL,
+                  PRIMARY KEY (`id_plat`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="restaurant">
+                CREATE TABLE `restaurant` (
+                  `id_restaurant` int(11) NOT NULL AUTO_INCREMENT,
+                  `nom_restaurant` varchar(50) NOT NULL,
+                  `adr_restaurant` varchar(100) NOT NULL,
+                  `id_restaurateur` int(11) NOT NULL,
+                  PRIMARY KEY (`id_restaurant`),
+                  UNIQUE KEY `adr_restaurant` (`adr_restaurant`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="restaurateur">
+                CREATE TABLE `restaurateur` (
+                  `Id_pers` int(11) NOT NULL,
+                  `id_restaurateur` int(11) NOT NULL,
+                  PRIMARY KEY (`Id_pers`,`id_restaurateur`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="tag">
+                CREATE TABLE `tag` (
+                  `id_tag` int(11) NOT NULL,
+                  `nom_tag` varchar(50) NOT NULL,
+                  PRIMARY KEY (`id_tag`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="tag_plat">
+                CREATE TABLE `tag_plat` (
+                  `id_tag` int(11) NOT NULL,
+                  `id_plat` int(11) NOT NULL,
+                  PRIMARY KEY (`id_tag`,`id_plat`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Base de données :  'searcheat'
+    -->
+    <database name="searcheat">
+        <!-- Table favoris -->
+        <!-- Table ingredients -->
+        <!-- Table menu -->
+        <!-- Table personne -->
+        <!-- Table plat -->
+        <!-- Table restaurant -->
+        <!-- Table restaurateur -->
+        <!-- Table tag -->
+        <!-- Table tag_plat -->
+    </database>
+</pma_xml_export>
